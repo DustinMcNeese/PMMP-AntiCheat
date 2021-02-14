@@ -1,0 +1,48 @@
+name: AC
+main: DustinMcNeese\AC\AC
+version: 1.0
+load: STARTUP
+author: DustinMcNeese
+api: [3.0.0]
+commands:
+      anticheat:
+           description: Shows AntiCheat version
+           aliases: ["AntiCheat","AntiCheat","AC"]
+      ac:
+           description: Shows AntiCheat version
+           aliases: ["AntiCheat","AntiCheat","AC"]
+      acmodules:
+           description: Shows loaded AntiCheat modules
+           aliases: ["AntiCheat","AntiCheat","AC","Modules"]
+      acauramodules:
+           description: Shows loaded AntiCheat KillAura Check modules
+           aliases: ["AntiCheat","AntiCheat","AC","Modules"]
+permissions:
+    ac:
+        description: "Allows to use all AC features."
+        default: false
+        children:
+            ac.notify:
+                description: "Get notified when someone is hacking."
+                default: false
+            ac.fly:
+                description: "A permission."
+                default: false
+            ac.glide:
+                description: "A permission."
+                default: false
+            ac.speed:
+                description: "A permission."
+                default: false
+            ac.noclip:
+                description: "A permission."
+                default: false
+            ac.reach:
+                description: "A permission."
+                default: false
+            ac.killaura:
+                description: "A permission."
+                default: false
+            ac.regen:
+                description: "A permission."
+                default: false
