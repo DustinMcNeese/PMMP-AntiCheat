@@ -19,5 +19,5 @@ xray: enabled
 fly: enabled 
 killaura: enabled 
 speed: enabled 
-verbose: enabled 
+allopwarn: enabled 
 
