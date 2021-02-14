@@ -2,7 +2,7 @@
 
 declare(strict_types=0);
 
-namespace DarkWav\SAC;
+namespace DustinMcNeese\AC;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
@@ -16,11 +16,10 @@ use pocketmine\plugin\PluginLoader;
 use pocketmine\scheduler\Task;
 use pocketmine\scheduler\TaskScheduler;
 
-use DarkWav\SAC\EventListener;
-use DarkWav\SAC\Observer;
-use DarkWav\SAC\KickTask;
+use DustinMcNeese\AC\EventListener;
+use DustinMcNeese\AC\KickTask;
 
-class SAC extends PluginBase
+class AC extends PluginBase
 {
   public $Config;
   public $Logger;
