@@ -1,1 +1,23 @@
+---
+###########################################################################
+#  METADATA OF CONFIG                                                     #
+#  DO NOT CHANGE UNLESS YOU KNOW WHAT                                     #
+#  YOU ARE DOING!!!                                                       #
+   Plugin-Version: 1.0                                                #
+   Config-Version: 1.0.0                                               #
+###########################################################################
+# REMEMBER: This AntiCheat software was made to prevent cheats            #
+# which are not detected by pocketmine itself. While SAC can              #
+#r un as a standalone plugin I still highly                               #
+# reccomend to turn Pocketmine's Native AntiCheat on if it                #
+# doesn't cause issues for you.                                           #
+###########################################################################
+#enable/disable by defualt they are all enabled
+noclip: enabled
+freeze: enabled
+xray: enabled 
+fly: enabled 
+killaura: enabled 
+speed: enabled 
+verbose: enabled 
 
