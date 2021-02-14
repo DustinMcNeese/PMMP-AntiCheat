@@ -16,7 +16,7 @@ use DustinMcNeese\AC\AC;
 class KickTask extends Task
 {
 
-  public function __construct(SAC $Main)
+  public function __construct(AC $Main)
   {
     $this->plugin = $Main;
   }
