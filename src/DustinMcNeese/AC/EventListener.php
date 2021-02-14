@@ -38,7 +38,7 @@ class EventListener implements Listener
   public $Logger;
   public $Server;
 
-  public function __construct(SAC $Main)
+  public function __construct(AC $Main)
   {
     $this->Main   = $Main;
     $this->Logger = $Main->getServer()->getLogger();
