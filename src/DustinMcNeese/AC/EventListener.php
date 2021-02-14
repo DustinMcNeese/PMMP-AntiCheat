@@ -2,7 +2,7 @@
 
 declare(strict_types=0);
 
-namespace DarkWav\SAC;
+namespace DustinMcNeese\AC;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\ConsoleCommandSender;
