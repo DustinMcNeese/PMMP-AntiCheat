@@ -1,0 +1,411 @@
+---
+###########################################################################
+#  METADATA OF CONFIG                                                     #
+#  DO NOT CHANGE UNLESS YOU KNOW WHAT                                     #
+#  YOU ARE DOING!!!                                                       #
+   Plugin-Version: 1.0                                                #
+   Config-Version: 1.0                                             #
+###########################################################################
+# AntiCheat main configuration file.                                #
+# Current version: 3.6.6                                                  #
+# What should be blocked?                                                 #
+###########################################################################
+# true = ENABLE                                                           #
+# false = DISABLE                                                         #
+# block = block Hack                                                      #
+# kick = Player kick                                                      #
+###########################################################################
+# REMEMBER: This AntiCheat software was made to prevent cheats            #
+# which are not detected by pocketmine itself. While AC can              #
+#r un as a standalone plugin I still highly                               #
+# reccomend to turn Pocketmine's Native AntiCheat on if it                #
+# doesn't cause issues for you.                                           #
+###########################################################################
+#Enables i am waching you message
+
+   I-AM-WATCHING-YOU: false
+
+#Which color should be used in AC?
+#Supported colors:
+# 0 = BLACK
+# 1 = DARK_BLUE
+# 2 = DARK_GREEN
+# 3 = DARK_AQUA
+# 4 = DARK_RED
+# 5 = DARK_PURPLE
+# 6 = GOLD
+# 7 = GRAY
+# 8 = DARK_GRAY
+# 9 = BLUE
+# a = GREEN
+# b = AQUA
+# c = RED
+# d = LIGHT_PURPLE
+# e = YELLOW
+# f = WHITE
+
+   Color: 3
+
+#Hilight non-critical events with this color?
+#this will also color normal startup messages in
+#the previously defined color, which can be considered
+#distracting by some users.
+
+   ColorEverything: false
+
+#Enable auto banning after an amount of kicks???
+#0 = Disabled
+#1 = Instant Ban
+
+   Max-Hacking-Times: 0
+
+#What commands should be executed then?
+#Use %PLAYER% for the Players name.
+
+   MaxHackingExceededCommands:
+
+   - "ban %PLAYER%"
+
+#Should AC show a message when someone gets kicked?
+#If yes, which message should be shown?
+
+   KickPlayerMessageBool: true
+   KickPlayerMessage: "[AC] > %PLAYER% was kicked for hacking. I am always watching you."
+
+#Should AC show a message when someone gets banned?
+#If yes, which message should be shown?
+
+   BanPlayerMessageBool: true
+   BanPlayerMessage: "[AC] > %PLAYER% was BANNED for hacking. I am always watching you."
+
+#Enable verbose output???
+#Sends a mesage to all OPs if someone is hacking.
+#In some rare cases this might send messages to ranom people.
+
+   Verbose: true
+
+#------------------------# Fly #------------------------#
+#Do you want to enable Fly check?
+#This wont have any problems with falling or jumping,
+#even if the player has JumpBoost 2.
+#This has beem re-written in 3.1.0 and
+#takes care of NoDownlGlide.
+#This check is sneaky. It will suddenly kick or freeze the
+#hacker without any warning or dragback before.
+
+   Fly: true
+
+#How many moves may a player be flying before detection?
+#16 Should work fine. (Standard)
+#NEVER set this lower than 10
+#Increase if Fly causes false poitives.
+#Decrease of Hackers bypass this.
+
+   Fly-Threshold: 16
+
+#Fow how long (in seconds) should the Fly check
+#turn off after the player touched a slime block?
+#Increase if high slime bounces cause false kicks.
+#Decrease if slime is built into your maps ground
+#for decoration purposes and bypasses occur because of this.
+#Set to 0 if you only use slime blocks for decoration purposes
+#and their movement effect cant be triggered by any player.
+
+   SlimeSeconds: 10
+   
+#Wich Punishment should take place if Fly is detected?
+
+   Fly-Punishment: kick
+
+#Which Message Should be shown if Fly is detected?
+
+   Fly-Message: "[AC] > Fly is not allowed!"
+
+#Which Log Message Sould be shown if Fly is detected?
+
+   Fly-LogMessage: "[AC] > %PLAYER% is hacking Fly!"
+
+#---------------------# KillAura #----------------------#
+#Do you want to enable KillAura check?
+#This also catches AimAura and KillAuraLegit.
+#This will block anything that gives the player
+#a significant gamplay advantage, not useless bots.
+#TP-Aura is handled by Speed. This is purely behavoir
+#based, it does not spawn any fake entities.
+#While some components of AntiKillAura might
+#immediately take action upon violation,
+#others are sneaky and will suddenly cause a kick.
+
+   KillAura: true
+
+#Angle (3rd-person-pvp prevention)
+#This will block hitting with impossible angles.
+#(blocks hitting behind yourself)
+#This is pretty basic and will not cause false
+#positives or false alerts.
+#This also communicates with Heuristics. (Even when disabled.)
+#This check immediately takes action upon violation.
+#Do you want to enable Angle?
+
+   Angle: true
+
+#Minimum check distance
+#How many blocks must 2 Players be away from each
+#other to be violated for angle if they hit with more
+#than 180 degrees angle?.
+#NEVER set this lower than 1.0!
+
+   AngleViolationMinDistance: 2.25
+
+#How far must a player hit in order to be violated immediately?
+
+   ViolationRange: 4.5
+
+#Advanced KillAura Heuristics
+#This is an advanced algorithm to catch a lot more
+#combat hacks. This is generally aggersive, but
+#you can make it even more aggressive or rather
+#permissive, but i recommend leaving it as it is.
+#This check is sneaky. It will suddenly kick the
+#hacker without any warning or hit canceling before.
+#How strong should Heuristics be configured?
+#
+# 0 = DISABLE
+# 1 = PERMISSIVE
+# 2 = NORMAL (Default)
+# 3 = AGGRESSIVE
+#
+# PREMISSIVE will cause close to zero false positives
+# even on large servers, but detection is slow and
+# bypasses are more likely.
+#
+# NORMAL will catch most KillAuras, with a very little
+# chanche of both false positives and negatives.
+# I would recommand this setting because it is the most
+# efficent and has the most usability.
+#
+# AGGRESSIVE will catch nearly every KillAura very fast,
+# even some triggerbots are detected. This configuration is
+# very agressive and may cause false positives depending
+# on the situation. If you set "KillAura-Threshold" to
+# at least 50 it can be very effective. USE AT YOUR OWN RISK!
+#
+#I reccomand to use PERMISSIVE if you have a big server.
+#For other servers, use NORMAL for a normal server , only
+#use AGGRESSIVE if you have a smaller server or need
+#really fast detection. Use high thresholds for this.
+
+   Heuristics: 2
+
+#DeepHeuristics (Triggerbot/Advanced Aura Detection)
+#This catches combat hacks that actually aim 
+#on a Player. Disabeling this could make the check
+#pretty easy to bypass.
+#This check is sneaky. It will suddenly kick the
+#hacker without any warning or hit canceling before.
+#Advanced behavorial analysis of a players combat.
+#This is a component of Heuristics you can configure.
+#This will NOT work if Heuristics are disabled!
+#
+# 0 = DISABLE
+# 1 = PERMISSIVE
+# 2 = NORMAL (Default)
+# 3 = AGGRESSIVE
+#
+# PERMISSIVE and NORMAL will catch some Macros and helps the KillAura
+# Check to perform better. Generally NORMAL catches more hacks whilst
+# PERMISSIVE gives almost zero False Alarms, it is still your choice.
+# Works best with Heuristics set to PREMISSIVE or NORMAL.
+#
+# AGGRESSIVE is pretty paranoid and will catch nearly every combat hack in existance,
+# but should be used with high thresholds. False Alarms much more likely.
+# Works best with Heuristics set to AGGRESSIVE. USE AT YOUR OWN RISK!
+#
+#I would recommend to use AGGRESSIVE for fast detection,
+#for any other case use NORMAL.
+#Only use PERMISSIVE if you get False Detections with NORMAL.
+
+   DeepHeuristics: 2
+
+#FastClick
+#This kicks players that hit more
+#than a specific amount of times per second
+#It will block too fast hit speeds.
+#This check is sneaky. It will suddenly kick the
+#hacker without any warning or hit canceling before.
+
+   FastClick: true
+
+#How many hits per second should players be allowed to get?
+#Higher this if false positives occur.
+
+   MaxCPS: 12
+
+#How many times must a player hack before detection?
+#35 Should work fine. (Standard)
+#NEVER set this lower than 25
+#Suitable settings:
+#For PREMISSIVE Heuristics: 10-30 (I would reccomend about 20)
+#For   NORMAL   Heuristics: 30-50 (I would reccomend about 40)
+#For AGGRESSIVE Heuristics: 50-70 (I would reccomend about 60)
+#Increase if KillAura causes false poitives.
+
+   KillAura-Threshold: 40
+
+#Which Message Should be shown if KillAura is detected?
+
+   KillAura-Message: "[AC] > KillAura is not allowed!"
+   KillAura-HEUR-Message: "[AC] > Suspicious Combat Behavoir!"
+
+#Which Log Message Should be shown if KillAura is detected?
+
+   KillAura-LogMessage: "[AC] > %PLAYER% is suspected for KillAura (VL = %AURAVL%)!"
+   KillAura-HEUR-LogMessage: "[AC] > %PLAYER% is fighting Suspiciously (VL = %HEURVL%)!"
+
+#-----------------------# Regen #-----------------------#
+#Do you want to enable Regen check?
+#Stops INSANE regeneration.
+#This check immediately takes action upon violation.
+
+   Regen: true
+
+#Wich Punishment should take place if Regen is detected?
+
+   Regen-Punishment: kick
+
+#Which Message Should be shown if Regen is detected?
+
+   Regen-Message: "[AC] > Regen is not allowed!"
+
+#Which Log Message Should be shown if Regen is detected?
+
+   Regen-LogMessage: "[AC] > %PLAYER% is hacking Regen!"
+
+#----------------------# FastBow #----------------------#
+#Do you want to enable FastBow check?
+#Prevent players from shooting arrows too fast.
+#Works Well as of version 3.3.4.
+#This check immediately takes action upon violation.
+
+   FastBow: true
+
+#Which Punishment should take place if FastBow is detected?
+
+   FastBow-Punishment: kick
+
+#Which Message Should be shown if FastBow is detected?
+
+   FastBow-Message: "[AC] > FastBow is not allowed!"
+
+#Which Log Message Should be shown if FastBow is detected?
+
+   FastBow-LogMessage: "[AC] > %PLAYER% is suspected for FastBow (VL = %FASTBOWVL%)!"
+
+#----------------------# Speed #------------------------#
+#Do you want to enable Speed check?
+#This works with falling.
+#This also catches most TP-Aura hacks.
+#This check is sneaky. It will suddenly kick or freeze the
+#hacker without any warning or dragback before.
+
+   Speed: true
+
+#Wich Punishment should take place?
+#WARNING: setting this to block will
+#EXTREMLY lower the combat protection!
+
+   Speed-Punishment: kick
+
+#How many times must a player be hacking before detection?
+#6 Should work fine. (Standard)
+#NEVER set this to 0
+
+   Speed-Threshold: 6
+
+#Which Message Should be shown if Speed is detected?
+
+   Speed-Message: "[AC] > Speed is not allowed!"
+
+#Which Log Message Should be shown if Speed is detected?
+
+   Speed-LogMessage: "[AC] > %PLAYER% is suspected for Speed (VL = %SPEEDVL%)!"
+
+#----------------------# Reach #------------------------#
+#Do you want to enable Reach check?
+#This check immediately takes action upon violation.
+
+   Reach: true
+
+#How much Range may a player have to be legit?
+#This will support the KillAura Checks if enabled.
+#Maxrange will be the maximum range.
+#Players are not kicked for that due to
+#False Positives.
+#It simply mitigates an exploit in the game.
+#Standard: 4.0
+#NEVER set this to lower than 1
+
+   MaxRange:  4.0
+
+#----------------------# Glide #------------------------#
+#Do you want to enable Glide check?
+#NoDownlGlide is handled by Fly.
+#This check is sneaky. It will suddenly kick or freeze the
+#hacker without any warning or dragback before.
+
+   Glide: true
+
+#How fast must a player be falling to not get violated for glide?
+#Tweaks:
+#Set to 5 for Mininimal false positives.
+#Set to 10 for Maxiumum protection.
+
+   MinDownfallSpeed: 7.5
+
+#Wich Punishment should take place if Glide is detected?
+
+   Glide-Punishment: kick
+
+#Which Message Should be shown if Glide is detected?
+
+   Glide-Message: "[AC] > Glide is not allowed!"
+
+#Which Log Message Should be shown if Glide is detected?
+
+   Glide-LogMessage: "[AC] > %PLAYER% is hacking Glide!"
+
+#-----------------------# NoClip #-----------------------#
+#Do you want to enable NoClip Detection?
+#This prevents players form glitching through blocks.
+#If this caueses bugs, please report it to the Author!
+#Lag with stairs has been highly decreased with the update
+#3.0.2. IT STILL MAY CAUSE GLICHES!
+#Also Prevents players from teleporting inside of Blocks with
+#Ender Pearls as of Update 3.4.2
+#This check immediately takes action upon violation.
+
+   NoClip: true
+
+#Which Punishment should take place?
+#Kicking works fine as of the 3.4.X Updates
+#BUT you might run into false positives with PISTONS
+#so kicking is turned off by default
+
+   NoClip-Punishment: block
+
+#How many times must a player be hacking before kick?
+#i reccomand setting this to above 50 because of pocketmines
+#bugs and glitches.
+#NEVER set this to 0
+
+   NoClip-Threshold: 75
+
+#Which Message Should be shown if NoClip is detected?
+
+   NoClip-Message: "[AC] > NoClip is not allowed!"
+
+#Which Log Message Should be shown if NoClip is detected?
+
+   NoClip-LogMessage: "[AC] > %PLAYER% is suspected for NoClip (VL = %NOCLIPVL%)!"
+
+...
