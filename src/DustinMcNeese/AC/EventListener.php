@@ -31,7 +31,6 @@ use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\event\player\PlayerDeathEvent;
 
 use DustinMcNeese\AC\AC;
-use DustinMcNeese\AC\Observer;
 
 class EventListener implements Listener
 {
