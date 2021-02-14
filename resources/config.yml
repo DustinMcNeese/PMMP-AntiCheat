@@ -3,8 +3,8 @@
 #  METADATA OF CONFIG                                                     #
 #  DO NOT CHANGE UNLESS YOU KNOW WHAT                                     #
 #  YOU ARE DOING!!!                                                       #
-   Plugin-Version: 1.0                                                #
-   Config-Version: 3.0.0                                               #
+   Plugin-Version: 1.0                                               #
+   Config-Version: 5                                           #
 ###########################################################################
 # REMEMBER: This AntiCheat software was made to prevent cheats            #
 # which are not detected by pocketmine itself. While AC can              #
